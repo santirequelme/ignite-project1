@@ -14,6 +14,7 @@ export function Post({ author, publishedAt, content }) {
 
   const [newCommentText, setNewCommentText] = useState('')
 
+
   
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
@@ -44,6 +45,7 @@ export function Post({ author, publishedAt, content }) {
     })
     setComments(commentsWithoutDeletedOne);
   }
+  const isNewCommentEmpty = newCommentText.length === 0 ;
 
   return (
     <article className={styles.post}>
@@ -79,7 +81,7 @@ export function Post({ author, publishedAt, content }) {
           required
         />
         <footer>
-          <button type="submit" disabled= {newCommentText.length === 0 ? true : false }>Publicar</button>
+          <button type="submit" disabled= {isNewCommentEmpty}>Publicar</button>
         </footer>
       </form>
       <div className={styles.commentList}>
